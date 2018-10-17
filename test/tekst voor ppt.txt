@@ -1,0 +1,23 @@
+Welkom allemaal! Mijn presentatie gaat over stress herkenning op basis van biometrische data.
+
+Wie ben ik?
+Ik heet Rhea Hau en ik woon momenteel in Zoetermeer. Dit is het plaatje van een deel van het centrum in Zoetermeer. Verder studeer ik aan de Hogeschool Rotterdam. Mijn opleiding heet Technsiche Informatica en daar leer ik vooral verschillende programmeertalen, netwerken en security, wiskunde ABC en verschillende projecten waarin ik continu met hardwares mee bezig ben, zoals IOT gerelateerde onderwerpen.
+
+Wat is mijn stageopdracht?
+We weten dat stress niet gezond is. Maar dat komt regelmatig voor en zeker op de werkvloer. Mensen met stress komen dan niet vrolijk naar werk, de kwaliteit van de medewerkers gaan achteruit en er kan veel ziekte verzuim ontstaan bijvoorbeeld. We willen dus de negatieve kant van stress terug te dringen naar de positieve kant. Maar wat is de mogelijke oplossing om dit te verhelpen?
+
+Voor mijn project ga ik opzoek naar wat is stress, welke biometrische data hebben te maken met stress en welke sensoren zijn er om aan die data te kunnen komen.  Wanneer ik genoeg informatie heb, kan ik beginnen met de sensoren inkopen, uittesten, programmeren, kalibreren en data uithalen voor het volgende deel van mijn onderzoek.
+
+Mijn tweede deel van mijn onderzoek ben ik vooral bezig met onderzoeken van verschillende algoritmes van artificial intelligence om stress te detecteren. Wanneer ik zo ver ben met de stress vinden, kan ik het algoritme zo leren dat die zelf kan uitvoeren met een andere deel van me data. Uiteindelijk moet die kunnen zeggen, is het stress of niet op dat moment.
+
+Hier komen mijn deelvragen voor mijn onderzoek. Deelvraag 1 gaat over welke biometrische data heb ik nodig? Deelvraag 2 gaat over welke sensoren zijn er beschikbaar? Deelvraag 3 gaat over welke classificatie algoritme ga ik gebruiken om stress te vinden? Mijn hoofdvraag wordt dan samengevat, hoe ziet een algoritme eruit dat, op basis van voldoende biometrische data, stress bij de gebruiker kan detecteren?
+
+
+Wat heb ik gedaan tot nu toe?
+Ik ben eerst begonnen met mijn onderzoeksvoorstel. Die zou ik af moeten hebben voordat ik kan beginnen met mijn stage, maar het liep uit op school dus was ik de eerste paar weken ermee bezig geweest. Tegelijkertijd was ik ook al bezig met wetenschappelijke artikelen door te nemen en mijn scriptie te schrijven. Ik heb sensoren ingekocht volgens de betrouwbare bronnen en heb ik ook de sensoren zitten testen en ben ik nu nog steeds wel bezig. Deze week zou ik dan klaar zijn met alle aansluitingen en accuraat kunnen meten
+
+Wat zal ik nog doen hierna?
+Als alle aansluitingen correct zijn en moet er data verzameld en verwerkt worden. Vervolgens ga ik diepere onderzoek doen over de specifieke classificatie algoritme die nodig is voor stress herkennen.
+Daarna ben ik bezig met het programmeren op basis van AI. Door de data te trainen en te testen met die algoritme, moet de stressherkenning tussen 80 en 90% accuraat zijn.
+
+Hier nog een aantal foto's die ik heb gemaakt om te laten zien aan jullie. Dit is mijn ademhalingsensor, pulse sensor, zweetsensor, mijn microcontroller die gebaseerd is op arduino, deze heeft wifi en bluetooth. Daarmee kan ik mijn data doorversturen op afstand. Dit mijn programmeer omgeving en dit is een voorbeeld grafiekje van mijn pulse sensor.

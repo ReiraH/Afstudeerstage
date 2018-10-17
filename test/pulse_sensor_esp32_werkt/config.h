@@ -1,0 +1,1 @@
+int AwnserToEverything = 42;
