@@ -1,0 +1,29 @@
+#include <Arduino.h>
+
+#define SERIESRESISTOR 1000000
+
+#define ANALOG_PIN_1 0
+float analog_value = 0;
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("ESP32 Analog IN Test");
+}
+
+void loop() {
+  float reading = 0;
+  // put your main code here, to run repeatedly:
+  analog_value = analogRead(ANALOG_PIN_1);
+  // float voltage = analog_value * (5.0 / 1023.0);
+  //R = 10K*ADC / (1023 - ADC). 
+
+  float R = (SERIESRESISTOR * analog_value / (1023 - analog_value)) * (-1);
+  //analog_value = (1023 / analog_value)  - 1;     // (1023/ADC - 1) 
+  //analog_value = SERIESRESISTOR / analog_value;  // 10K / (1023/ADC - 1)
+
+  Serial.println(R);
+  Serial.println(analog_value);
+  delay(500);
+  
+}
