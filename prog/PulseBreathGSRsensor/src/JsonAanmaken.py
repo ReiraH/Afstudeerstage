@@ -39,7 +39,8 @@ while True:
         j = json.loads(decoded_bytes)
         #tijd toevoegen aan json object(esp32 heeft geen tijd)
         j = json.dumps({'Time':datetime.datetime.now(), 'value':j}, default = myconverter)
+        print(j)
         #nog een keer omzetten naar een json object
-        pythonDictionary = json.loads(j)
+        #pythonDictionary = json.loads(j)
         #schrijven naar de json file
-        writetoJSONFile(path, fileName, pythonDictionary)
+        #writetoJSONFile(path, fileName, pythonDictionary)
