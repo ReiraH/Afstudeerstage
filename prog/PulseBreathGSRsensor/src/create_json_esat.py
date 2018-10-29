@@ -9,28 +9,22 @@ def write_to_file():
     current_time = datetime.datetime.now()
     time_now = current_time.strftime('%d_%m_%Y_%H_%M_%S')
     path = time_now + str('.json')
+    convert_JSON_to_CSV(data_list)
     with open(path, 'a') as outfile:
         json.dump(data_list, outfile)
-    convert_JSON_to_CSV(data_list)
 
 def read_to_file():
     pass
 
 def convert_JSON_to_CSV(_dataToCSV):
     x = _dataToCSV
-#x = json.loads(_dataToCSV)
-#filewriter = csv.writer(open("test.csv", "wb"))
-
-    with open('persons.csv', 'wb') as csvfile:
-        filewriter = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-
-# Write CSV Header, If you dont need that, remove this line
-    filewriter.writerow(["date", "sensor", "value", "time"])
+    f = csv.writer(open("persons.csv", "wb+"))
+    f.writerow(["date", "sensor", "value", "time"])
     for x in x:
-        filewriter.writerow([x[date_now],
-                             x[sensor],
-                             x[value],
-                             x[time_now]])
+        f.writerow([x['date'],
+                             x['sensor'],
+                             x['value'],
+                             x['time']])
 
 if __name__ == "__main__":
     print("STARTING SCRIPT")
