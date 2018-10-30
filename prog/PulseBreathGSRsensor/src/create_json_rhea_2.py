@@ -9,7 +9,6 @@ def write_to_file():
     current_time = datetime.datetime.now()
     time_now = current_time.strftime('%d_%m_%Y_%H_%M_%S')
     path = time_now + str('.json')
-    convert_JSON_to_CSV(data_list)
     with open(path, 'a') as outfile:
         json.dump(data_list, outfile)
 
@@ -18,35 +17,45 @@ def read_to_file():
 
 def convert_JSON_to_CSV(_dataToCSV):
     x = _dataToCSV
-
-    if sensor 
-    elif 
-    elif 
-    else:
-
-    f = csv.writer(open("Pulse.csv" + datetime.datetime.now(), "wb+"))
-    f.writerow(["date", "sensor", "value", "time"])
-    for x in x:
-        f.writerow([x['date'],
-                    x['sensor'],
-                    x['value'],
-                    x['time']])
+    sensor = x['sensor']
     
-    g = csv.writer(open("GSR.csv" + datetime.datetime.now(), "wb+"))
-    fg.writerow(["date", "sensor", "value", "time"])
-    for x in x:
-        f.writerow([x['date'],
-                    x['sensor'],
-                    x['value'],
-                    x['time']])
+    a = []
+    b = []
+    c = []
+    i = 0
 
-    h = csv.writer(open("Breath.csv" + datetime.datetime.now(), "wb+"))
-    h.writerow(["date", "sensor", "value", "time"])
-    for x in x:
+    if sensor == "Pulse sensor":
+        a.append(sensor)
+        f = csv.writer(open("Pulse.csv", "a"),lineterminator='\n')
         f.writerow([x['date'],
-                    x['sensor'],
-                    x['value'],
-                    x['time']])
+                        x['sensor'],
+                        x['value'],
+                        x['time']])
+
+        print("a " + str(a))
+
+    elif sensor == "GSR sensor":
+        b.append(sensor)
+        g = csv.writer(open("GSR.csv", "a"),lineterminator='\n')
+        g.writerow([x['date'],
+                        x['sensor'],
+                        x['value'],
+                        x['time']])
+
+        print("b " + str(b))
+
+    elif sensor == "Breath sensor":
+        c.append(sensor)
+        h = csv.writer(open("Breath.csv", "a"),lineterminator='\n')
+        h.writerow([x['date'],
+                        x['sensor'],
+                        x['value'],
+                        x['time']])
+
+        print("c " + str(c))
+
+    else:
+        print("geen waarde gevonden")
 
 if __name__ == "__main__":
     print("STARTING SCRIPT")
@@ -56,6 +65,7 @@ if __name__ == "__main__":
     ser.flushInput()
     ser_bytes = ser.readline()
     data_list = []
+
     while ser_bytes:
         decoded_bytes = str(ser_bytes[0:len(ser_bytes)-2].decode("ascii"))
         print(decoded_bytes)
@@ -69,30 +79,12 @@ if __name__ == "__main__":
         current_time = datetime.datetime.now()
         date_now = current_time.strftime('%d-%m-%Y')
         time_now = current_time.strftime('%H:%M:%S.%f')
-        
         data = {
                 'date': date_now,
                 'time': time_now,
                 'sensor': sensor,
                 'value':value
             }
-            
-        a = []
-        b = []
-        c = []
-        i = 0
-
-        if sensor == "Pulse sensor":
-            a.append(sensor)
-            print("a " + str(a))
-        elif sensor == "GSR sensor":
-            b.append(sensor)
-            print("b " + str(b))
-        elif sensor == "Breath sensor":
-            c.append(sensor)
-            print("c " + str(c))
-        else:
-            print("geen waarde gevonden")
-
+        convert_JSON_to_CSV(data)
         data_list.append(data)
         ser_bytes = ser.readline()
