@@ -23,14 +23,14 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   aTime = millis();
-  Serial.print("t: " + String(aTime) + "  ");
   analog_value0 = analogRead(ANALOG_PIN_0);
-  Serial.print("p: " + String(analog_value0) + "  ");
   analog_value14 = analogRead(ANALOG_PIN_14);
-  Serial.print("b: " + String(analog_value14) + "  ");
   analog_value2 = analogRead(ANALOG_PIN_2);
-  Serial.print("g: " + String(analog_value2) + "  ");
-  Serial.println("");
+  
+  Serial.println("t: " + String(aTime) + 
+                " p: " + String(analog_value0) + 
+                " b: " + String(analog_value14) + 
+                " g: " + String(analog_value2));
   delay(20);
   
   // (10)/20-50 milliseconden sample rate

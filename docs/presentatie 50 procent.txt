@@ -1,0 +1,13 @@
+hoofdvragen en deelvragen
+literatuur resultaat (welke artikelen, wat geleerd)
+
+pulse sensor (plaatje, aansluitschema, uitleg)
+breathing sensor(plaatje, aansluitschema, uitleg, spanningsdeler)
+gsr sensor(plaatje, aansluitschema, uitleg, spanningsdeler)
+
+software op arduino
+software op pc
+omzetten naar frequentie (fourier transformatie)
+
+planning gedaan
+planning vervolg (2 weken voor fourier transformatie, neuraal netwerk)
