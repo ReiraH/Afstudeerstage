@@ -1,0 +1,39 @@
+[slide 1]
+Hi all. My name is Rhea Hau and for this 4-weekly presentation I will continue to talk about my project. My project is about stress detection using biometric data. 
+
+[slide 3]
+Here is a short review about the previous presentation. What did I do BEFORE the first 4-weekly presentation? First I finish my research proposal. I wrote my thesis and it's on going. I was doing my research about what is stress and which sensors do I need to detect stress. Then I bought sensors which can be applied on the ESP32. ESP32 is similar to Arduino board. But it's using low energy and it also has wifi and bluetooth module on this board. I also have test the sensors on the hardware.
+
+Ater the first 4-weekly presentation I would be working on the research about which classification algorithm I want to to use to detect stress. But Before I do that, I need to draw different graphs for each measured data from the sensors. So in this slide, you can see that I only reach the collect and process data.
+
+[slide 6]
+So far... What I did as extra tasks are to transfer the data into one overview and three seperated files, like CSV and JSON files. I also used mtplotlib for python to draw graphs for data from each sensor. I also did my little research about the fourier transform. Because from the literature review are heart rate variabilty the most which are used for detecting stress in many studies. They are always looking for the frequencies. So using the fourier transform, you can find those frequencies. As last, I will doing my research about which classification algorithm I can use to detect stress with my biometric data.
+
+[slide 8]
+As you can see here on the picture, this is a pulse sensor. This is what I use for measuring the heart rate. On the circuit next to here, is how the pulse sensor is connected to the ESP32. The vertical line to the analog pin means to read the data from the pulse sensor through the ESP32.
+
+[slide 9]
+And this is the conductive rubber cord stretch sensor, which I also called as breath sensor. This one is to measure the breathing. And this circuit let you see how to connect to the ESP32.
+
+[slide 10]
+This is GSR also known as Galvanic skin response sensor, which I called as sweating sensor. Because it is measure the variability of sweat. The more sweat as you can measure, the more voltage can be go through and less resistance.
+
+[slide 11]
+.............................
+
+[slide 13]
+Here are 3 sensors which are applied to the ESP32. There are codes running on the pc to get the data though the ESP32. Therefore, I use platform io which is installed on the visual studio code. Because using platform io platform I can easily find any board I want to communicate and it is also easier to use than the original Arduino IDE.
+
+[slide 14]
+When de data are ready to be processing, there are also codes to transfer the data into different and seperated files, like CSV and JSON files. I also use matplotlib to draw graphs from the values which are stored in the CSV files.
+
+[slide 15]
+
+[slide 17]
+fourier transform
+
+[slide 19]
+
+[slide 20]
+Here you see my planner from the whole project. As you can see there are some red colors. Red color means the tasks is already have delay. Purple color means that the tasks are finished with delay. And the dark red color means there are more chance for more delays.
+The delays are about the bluetooth 

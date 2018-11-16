@@ -1,0 +1,55 @@
+[slide 1] inleiding
+Welkom allemaal. Ik ben Rhea en mijn peer is Juno Verweerd. Mijn 50% presentatie gaat over stress herkenning met behulp van biometrische data.
+
+[slide 2]
+Mijn hoofdvraag is: Hoe ziet een algoritme eruit dat, op basis van voldoende biometrische data, stress bij de gebruiker kan detecteren?
+Deelvraag 1 is: Welke biometrische data is er nodig om stress te herkennen? MIJN TWEEDE DEELVRAAG IS: Welke sensoren zijn er nodig om deze biometrische data te kunnen meten? En tot slot mijn laatste deelvraag: Wat voor classificatie algoritme (zoals naive bayes, decision tree, neural network) is geschikt om stress te detecteren met de genoemde biometrische data?
+Tot nu toe heb ik OP deelvragen 1 en 2 EEN ANTWOORD KUNNEN VINDEN. De overige ANTWOORDEN ZULLEN BIJ DE VOLGENDE PRESENTATIE AAN BOD KOMEN
+
+[slide 3]
+Uit de literatuuronderzoeken is het gebleken dat bij stress veel cortisol ofwel stress hormonen kunnen ontstaan. Verder spelen het hoge bloeddruk, veel zweten, versnelde hartslag en ademhaling en ook de hersenactiviteit, de EEG, en de elektronische spierspanning, EMG, een grote rol bij stress.
+Omdat de kenmerken van stress voor iedereen anders zijn, is er geen vaste stelregel te geven om stress te detecteren.
+Hierbij is de stress leren herkennen nodig om feedback te vragen van de gebruiker. De feedback houdt in of de gebruiker de stress ervaart.
+En vrijwel elke artikel heeft de variabiliteit van de hartslag genoemd. En hierbij wordt er dus veel gekeken naar frequenties.
+
+[slide 4]
+Dit is een pulse sensor en die gebruik ik voor om de hartslag te meten. Deze plaats ik op mijn vinger voor de metingen. En dit is de stroomkring van de aansluiting voor de pulse sensor aan de ESP32. ESP32 is een soortgelijke arduino bordje. De verticale streep naar de analog pin is hoe hij de data uitleest.
+
+[slide 5]
+Dit is een Conductive Rubber Cord Stretch Sensor en ik noem het een breathing sensor. Deze gebruik ik voor om ademhaling te meten. Deze plaats ik rondom me buik. Hierbij kan je zien dat als ik inadem en wanner me buik ontspant, dat deze rubber cord stretch sensor uitrekt. Als die uitrekt, is er ook meer weerstand. En dit is de stroomkring voor de breathing sensor.
+
+[slide 6]
+Dit is een Galvanic skin response ofwel GSR sensor en ik noem het een zweetsensor. Deze gebruik ik voor om mijn zweet te meten. Hoe meer zweet des te meer voltage er doorheen kan en dus minder weerstand. En dit is de stroomkring voor de GSR sensor. 
+
+[slide 7]
+De aansluitingen voor deze 3 sensoren zijn zo aangesloten dankzij de spanningsdeler. Spanningsdeler is om de spanning kleiner te maken. Bij een spanningsdeler vinden 2 weerstanden plaats en die zorgen er voor dat de ingangspanning in serie verdeeld wordt, zodat de analog ingangen van de arduino binnen het bereik kunnen blijven.
+En deze is de formule die we kunnen gebruiken om de uitgangsspanning te berekenen. Voor verdere uitleg staat het in mijn scriptie.
+
+[slide 8]
+Hier zien we een schema hoe de data wordt verstuurd vanuit de sensoren naar de laptop toe. Alle 3 sensoren worden aangesloten op de ESP32. ESP32 heeft aantal voordelen. 1 is dat het weinig energie vraagt en 2 is dat hij wifi en bluetooth module heeft om data te versturen. Op de laptop wordt er een code gedraaid voor de ESP32 om de data op te vragen. Dat gebruik ik door middel van de platform io die op de visual studio code wordt geinstalleerd. Dit werkt een stuk vriendelijker dan een normale arduino IDE.
+
+[slide 9]
+Vervolgens hebben we de data die we moeten verwerken in aparte bestanden, zoals de CSV files. Maar om de data uit te halen voor mijn pc heb ik de code als volgt nodig.
+
+Met de eerste regel code zorg ik ervoor dat de seriele data gelezen kunnen worden en vertaald worden in leesbare tekens. De data die uit de ESP32 komen, heeft verschillende waarden op 1 zelfde regel, in dit geval dus de t voor tijd van de arduino, p voor pulse, b voor breathing, g voor gsr waarden. Om de waarden makkelijker uitelkaar te scheiden heb ik de splits functie toegepast waar de spaties zijn.
+
+Current time wordt gebruik om de huidige tijd te bewaren en dat ik terug kan zien hoelang de metingen heeft geduurd. Datetime_now is om te zorgen dat mijn bestandsnamen een datum met de bijbehorende tijd bevat, zo staan de bestandsnamen goed onder elkaar.
+
+Vervolgens hebben we nog de dubbele punten die we ook willen vermijden voor de CSV files. Dus hierbij splits ik ze weer in stukjes. Daanra heb ik een lijst met waarden inclusief de namen. En een lijst met alleen waarden zonder namen.
+
+Om per regel te vullen met de gemeten waarden in de CSV file heb ik een functie geschreven. Voor die functie geef ik de lijst met waarden zonder teksten mee.
+
+[slide 10]
+Hier zien we een grafiek van mijn pulse sensor en de gemeten waarden. Ik heb matplotlib gebruikt voor python om de waarden van me CSV te plotten en zo ziet mijn grafiek eruit. Je ziet hier dat er een aantal opgesplitse golfjes zijn. Uit de literatuuronderzoeken is er vaak hartslag variabiliteit gebruikt en dus is het idee om fourier transformatie te gebruiken, want hiermee kan ik de frequentie achterkomen van me gemeten data. Uit al deze opgesplitse golfjes kunnen we de sterkste hertz vinden en daarbij kan ik de piek vinden van mijn hartslag per minuut. Dit behandel ik later in mijn 95% presentatie.
+
+[slide 11]
+Wat ik tot nu toe heb gedaan is als volgt. Ik heb de planning gemaakt, ik heb het logboek bijgehouden met uren, scrun backlog aangemaakt. Ik heb aan mijn scriptie gewerkt en verder ook testrapporten geschreven en verschillende onderzoek artikelen doorgenomen, ontwerp gemaakt voor de aansluitingen en de data transport. Ik heb de sensoren gekocht, getest op hardware en aan de ESP32 gesloten, software geschreven voor de ESP32 in CPP en voor de PC in python, data verzameld van de sensoren en opgeslagen in zowel JSON als CSV files, software geschreven voor het grafiek tekenen. Daarnaast heb ik ook nog een 4 wekenlijkse presenttaie gegeven aan mijn collega's bij ATOS.
+
+[slide 12]
+Voor de planning vervolg, ga ik verder met mijn fourier transformatie toepassen, heel veel grafieken maken, verder mezelf blijven meten (wanneer ik ontspan, stress en veel beweeg) en aan de slag gaan met de classifie algoritme toepassen. Hierbij zal ik mijn deelvraag 3 en mijn hoofdvraag kunnen beantwoorden.
+
+Op deze planning zie je dat een deel rood is. Rood staat voor later dan gepland. Paars staat voor afgronde taak met uitloop. Wijnrood staat voor kans op meer uitloop.
+Het gaat vooral om de bluetooth toepassen om de data over te brengen naar mijn laptop en hoe de classificatie algoritme werkt en nog meer grafieken maken van verschillende metingen. Groen staat voor januari en ik probeer 31 december mijn project te kunnen afronden.
+
+[slide 13]
+Voor de 5 competenties heb ik als volgt: Voor beheren  heb ik het logboek, de planning de git versie beheer. Voor analyseren heb ik de onderzoeken naar sensoren, data, stress en classificatie algoritme. Voor ontwerpen heb ik de aansluitingen van de sensoren, de data versturen en het gehele proces. Voor Adviseren heb ik de allerlei documentaties en mijn scriptie. Voor het realiseren heb ik mijn geschreven code en het prototype.
