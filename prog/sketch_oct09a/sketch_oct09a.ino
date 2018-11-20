@@ -1,121 +1,70 @@
-/*
+#include <Arduino.h>
+#include <time.h>
 
- This example connects to an unencrypted Wifi network.
- Then it prints the  MAC address of the Wifi shield,
- the IP address obtained, and other network details.
+import processing.serial.*;
+Serial mySerial;
+Table table;
 
- Circuit:
- * WiFi shield attached
+#define ANALOG_PIN_0 0
+float analog_value0 = 0;
 
- created 13 July 2010
- by dlf (Metodo2 srl)
- modified 31 May 2012
- by Tom Igoe
- */
-#include <SPI.h>
-#include <WiFi.h>
+#define GSR_RESISTOR 1000000000
+#define ANALOG_PIN_2 2
+float analog_value2 = 0;
 
-char ssid[] = "reirafoen";     //  your network SSID (name)
-char pass[] = "uqiux8xnn8us0";  // your network password
-int status = WL_IDLE_STATUS;     // the Wifi radio's status
+#define Breath_RESISTOR 1000000
+#define ANALOG_PIN_14 14
+float analog_value14 = 0;
+
+unsigned long aTime;
 
 void setup() {
-  //Initialize serial and wait for port to open:
-  Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("ESP32 Analog IN Test");
 
-  // check for the presence of the shield:
-  if (WiFi.status() == WL_NO_SHIELD) {
-    Serial.println("WiFi shield not present");
-    // don't continue:
-    while (true);
-  }
-
-  String fv = WiFi.firmwareVersion();
-  if (fv != "1.1.0") {
-    Serial.println("Please upgrade the firmware");
-  }
-
-  // attempt to connect to Wifi network:
-  while (status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to WPA SSID: ");
-    Serial.println(ssid);
-    // Connect to WPA/WPA2 network:
-    status = WiFi.begin(ssid, pass);
-
-    // wait 10 seconds for connection:
-    delay(10000);
-  }
-
-  // you're connected now, so print out the data:
-  Serial.print("You're connected to the network");
-  printCurrentNet();
-  printWifiData();
-
+  table = new Table();
+  table.addColumn("Data");
 }
 
 void loop() {
-  // check the network connection once every 10 seconds:
-  delay(10000);
-  printCurrentNet();
+  // put your main code here, to run repeatedly:
+  aTime = millis();
+  analog_value0 = analogRead(ANALOG_PIN_0);
+  analog_value14 = analogRead(ANALOG_PIN_14);
+  analog_value2 = analogRead(ANALOG_PIN_2);
+  
+  Serial.println("t: " + String(aTime) + 
+                " p: " + String(analog_value0) + 
+                " b: " + String(analog_value14) + 
+                " g: " + String(analog_value2));
+  delay(50);
+  
+  // (10)/20-50 milliseconden sample rate
 }
 
-void printWifiData() {
-  // print your WiFi shield's IP address:
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
-  Serial.println(ip);
-
-  // print your MAC address:
-  byte mac[6];
-  WiFi.macAddress(mac);
-  Serial.print("MAC address: ");
-  Serial.print(mac[5], HEX);
-  Serial.print(":");
-  Serial.print(mac[4], HEX);
-  Serial.print(":");
-  Serial.print(mac[3], HEX);
-  Serial.print(":");
-  Serial.print(mac[2], HEX);
-  Serial.print(":");
-  Serial.print(mac[1], HEX);
-  Serial.print(":");
-  Serial.println(mac[0], HEX);
-
+void draw()
+{
+  if(mySerial.available() > 0)
+  {
+    //set the value recieved as a String
+    String value = mySerial.readString();
+    //check to make sure there is a value
+    if(value != null)
+    {
+      //add a new row for each value
+      TableRow newRow = table.addRow();
+      //place the new row and value under the "Data" column
+      newRow.setString("Data", value);
+    }
+  }
 }
 
-void printCurrentNet() {
-  // print the SSID of the network you're attached to:
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-
-  // print the MAC address of the router you're attached to:
-  byte bssid[6];
-  WiFi.BSSID(bssid);
-  Serial.print("BSSID: ");
-  Serial.print(bssid[5], HEX);
-  Serial.print(":");
-  Serial.print(bssid[4], HEX);
-  Serial.print(":");
-  Serial.print(bssid[3], HEX);
-  Serial.print(":");
-  Serial.print(bssid[2], HEX);
-  Serial.print(":");
-  Serial.print(bssid[1], HEX);
-  Serial.print(":");
-  Serial.println(bssid[0], HEX);
-
-  // print the received signal strength:
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.println(rssi);
-
-  // print the encryption type:
-  byte encryption = WiFi.encryptionType();
-  Serial.print("Encryption Type:");
-  Serial.println(encryption, HEX);
-  Serial.println();
+void keyPressed()
+{
+  //save as a table in csv format(data/table - data folder name table)
+  saveTable(table, "/table.csv");
+  exit();
 }
+
+//  float R = (SERIESRESISTOR * analog_value / (1023 - analog_value)) * (-1);

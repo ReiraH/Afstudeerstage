@@ -31,7 +31,7 @@ void loop() {
                 " p: " + String(analog_value0) + 
                 " b: " + String(analog_value14) + 
                 " g: " + String(analog_value2));
-  delay(20);
+  delay(50);
   
   // (10)/20-50 milliseconden sample rate
 }
