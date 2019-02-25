@@ -8,8 +8,8 @@ with open('all_sensors.csv','r') as csv_file:
     plots = csv.reader(csv_file, delimiter=',')
     header = next(plots)
     for row in plots:
-        x.append(int(row[0]))
-        y.append(int(row[3]))
+        x.append(float(row[0]))
+        y.append(float(row[3]))
 
 
 plt.plot(x, y, color = 'blue')
