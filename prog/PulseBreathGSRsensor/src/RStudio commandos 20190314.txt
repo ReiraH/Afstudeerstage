@@ -1,0 +1,1 @@
+df <- read.csv('C:/Users/RHEA/Documents/GitHub/Afstudeerstage/prog/PulseBreathGSRsensor/src/20190311/all_sensors.csv', header=TRUE)
