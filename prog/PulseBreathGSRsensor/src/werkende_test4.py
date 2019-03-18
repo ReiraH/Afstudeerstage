@@ -36,7 +36,7 @@ def convert_to_CSV(_dataToCSV):
 
 
 if __name__ == "__main__":
-    ser = serial.Serial('COM5', 115200, timeout=1)
+    ser = serial.Serial('COM3', 115200, timeout=1)
     ser.flushInput()
     ser_bytes = ser.readline()
     data_list = []
