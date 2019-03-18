@@ -23,3 +23,6 @@ x dplyr::lag()    masks stats::lag()
 > FiveMinHeartPulse <- head(heartPulse, 2700)
 > df <- data.frame(FiveMinHeartPulse, FiveMinTimeLength)
 > ggplot(data = df, aes(x=FiveMinTimeLength, y=FiveMinHeartPulse)) + geom_line() + geom_point()
+> ma <- all_sensors$heart[c(2700:5468)]
+> FiveMinHeartPulse <- all_sensors$heart[c(2700:5468)]
+> FiveMinTimeLength <- all_sensors$time[c(2700:5468)]
